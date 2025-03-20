@@ -140,7 +140,7 @@ libraryBuildInfo
     -> IO HookedBuildInfo
 libraryBuildInfo verbosity profile installPath platform@(Platform arch os) ghcVersion extraLibs extraIncludes = do
   let
-      libraryPaths      = cudaLibraryPath platform installPath : extraLibs
+      libraryPaths      = (cudaLibraryPath platfrom installPath ++ "/stubs") : cudaLibraryPath platform installPath : extraLibs
       includePaths      = cudaIncludePath platform installPath : extraIncludes
 
       takeFirstExisting paths = do
